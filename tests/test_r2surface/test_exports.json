@@ -1,0 +1,1 @@
+[{"name":"__mh_execute_header","flagname":"sym.__mh_execute_header","realname":"__mh_execute_header","ordinal":0,"bind":"GLOBAL","size":0,"type":"FUNC","vaddr":4294967296,"paddr":0,"is_imported":false},{"name":"_main","flagname":"sym._main","realname":"_main","ordinal":1,"bind":"GLOBAL","size":0,"type":"FUNC","vaddr":4294971232,"paddr":3936,"is_imported":false}]

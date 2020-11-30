@@ -1,8 +1,12 @@
 [tool.poetry]
 name = "r2pyapi"
-version = "0.1.0"
-description = ""
+version = "0.1.1"
+description = "High level radare2 python API"
+license = "Apache-2.0"
+readme = "README.md"
+include = ["LICENSE"]
 authors = ["Koh M. Nakagawa <tsunekou1019@gmail.com>"]
+keywords = ["radare2", "scripting"]
 
 [tool.poetry.dependencies]
 python = "^3.8"

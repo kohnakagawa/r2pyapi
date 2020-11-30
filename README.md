@@ -1,6 +1,6 @@
 # r2pyapi
 
-High level python API of radare2
+High level radare2 python API 
 
 # Usage
 

@@ -1,0 +1,11 @@
+{
+  "type": "Executable file",
+  "file": "test.out",
+  "fd": 3,
+  "size": 12556,
+  "humansz": "12.3K",
+  "iorw": false,
+  "mode": "r-x",
+  "block": 256,
+  "format": "mach064"
+}

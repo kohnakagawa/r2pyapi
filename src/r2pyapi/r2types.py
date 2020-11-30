@@ -16,6 +16,16 @@ class R2Core:
 
 
 @dataclass()
+class R2EntryPoint:
+    vaddr: int
+    paddr: int
+    baddr: int
+    laddr: int
+    haddr: int
+    type: str
+
+
+@dataclass(init=False)
 class R2Bin:
     arch: str
     baddr: int
@@ -23,6 +33,82 @@ class R2Bin:
     bintype: str
     bits: int
     canary: bool
+    class_: str
+    cmp_csum: Optional[str]
+    compiled: str
+    compiler: str
+    crypto: bool
+    dbg_file: str
+    endian: str
+    havecode: bool
+    hdr_csum: Optional[str]
+    guid: str
+    intrp: str
+    laddr: int
+    lang: str
+    linenum: bool
+    lsyms: bool
+    machine: str
+    maxopsz: int
+    minopsz: int
+    nx: bool
+    os: str
+    overlay: Optional[bool]
+    cc: str
+    pcalign: int
+    pic: bool
+    relocs: bool
+    retguard: Optional[bool]
+    rpath: str
+    sanitiz: bool
+    signed: Optional[bool]
+    static: bool
+    stripped: bool
+    subsys: str
+    va: bool
+    checksums: dict
+
+    def __init__(self, raw: Dict[str, Union[str, int, bool]]) -> None:
+        self.arch = cast(str, raw["arch"])
+        self.baddr = cast(int, raw["baddr"])
+        self.binsz = cast(int, raw["binsz"])
+        self.bintype = cast(str, raw["bintype"])
+        self.bits = cast(int, raw["bits"])
+        self.canary = cast(bool, raw["canary"])
+        self.class_ = cast(str, raw["class"])
+        self.cmp_csum = cast(str, raw["cmp.csum"]) if "cmp.csum" in raw.keys() else None
+        self.compiled = cast(str, raw["compiled"])
+        self.compiler = cast(str, raw["compiler"])
+        self.crypto = cast(bool, raw["crypto"])
+        self.dbg_file = cast(str, raw["dbg_file"])
+        self.endian = cast(str, raw["endian"])
+        self.havecode = cast(bool, raw["havecode"])
+        self.hdr_csum = cast(str, raw["hdr.csum"]) if "hdr.csum" in raw.keys() else None
+        self.guid = cast(str, raw["guid"])
+        self.intrp = cast(str, raw["intrp"])
+        self.laddr = cast(int, raw["laddr"])
+        self.lang = cast(str, raw["lang"])
+        self.linenum = cast(bool, raw["linenum"])
+        self.lsyms = cast(bool, raw["lsyms"])
+        self.machine = cast(str, raw["machine"])
+        self.maxopsz = cast(int, raw["maxopsz"])
+        self.minopsz = cast(int, raw["minopsz"])
+        self.nx = cast(bool, raw["nx"])
+        self.os = cast(str, raw["os"])
+        self.overlay = cast(bool, raw["overlay"]) if "overlay" in raw.keys() else None
+        self.cc = cast(str, raw["cc"])
+        self.pcalign = cast(int, raw["pcalign"])
+        self.pic = cast(bool, raw["pic"])
+        self.relocs = cast(bool, raw["relocs"])
+        self.retguard = cast(bool, raw["retguard"]) if "retguard" in raw.keys() else None
+        self.rpath = cast(str, raw["rpath"])
+        self.sanitiz = cast(bool, raw["sanitiz"])
+        self.signed = cast(bool, raw["signed"]) if "signed" in raw.keys() else None
+        self.static = cast(bool, raw["static"])
+        self.stripped = cast(bool, raw["stripped"])
+        self.subsys = cast(str, raw["subsys"])
+        self.va = cast(bool, raw["va"])
+        self.checksums = cast(dict, raw["checksums"])
 
 
 @dataclass()

@@ -76,3 +76,46 @@ def test_functions(test_bin: str, datadir: Path) -> None:
             key: value for key, value in asdict(data).items() if value is not None
         }
         assert data_as_dict == ref
+
+
+@pytest.mark.parametrize("test_bin", test_bins)
+def test_core(test_bin: str, datadir: Path) -> None:
+    src_file = str(datadir / test_bin)
+    ref_file = test_bin.split(".")[0] + "_core.json"
+    r2 = r2pipe.open(src_file)
+
+    r2_surf = R2Surface(r2)
+
+    with open(ref_file, "r") as fin:
+        ref = json.loads(fin.read())
+
+    r2_surf.core.file = os.path.basename(r2_surf.core.file)
+
+    assert asdict(r2_surf.core) == ref
+
+
+@pytest.mark.parametrize("test_bin", test_bins)
+def test_bin(test_bin: str, datadir: Path) -> None:
+    src_file = str(datadir / test_bin)
+    ref_file = test_bin.split(".")[0] + "_bin.json"
+    r2 = r2pipe.open(src_file)
+
+    r2_surf = R2Surface(r2)
+
+    with open(ref_file, "r") as fin:
+        ref = json.loads(fin.read())
+
+    assert {key: value for key, value in asdict(r2_surf.bin).items() if value is not None} == ref
+
+@pytest.mark.parametrize("test_bin", test_bins)
+def test_entry_point(test_bin: str, datadir: Path) -> None:
+    src_file = str(datadir / test_bin)
+    ref_file = test_bin.split(".")[0] + "_entry_point.json"
+    r2 = r2pipe.open(src_file)
+
+    r2_surf = R2Surface(r2)
+
+    with open(ref_file, "r") as fin:
+        ref = json.loads(fin.read())
+
+    assert asdict(r2_surf.entry_point) == ref

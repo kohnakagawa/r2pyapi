@@ -2,12 +2,15 @@ from typing import Optional
 
 import r2pipe
 
-from .r2types import R2Export, R2Function, R2Import, R2Section
+from .r2types import R2Export, R2Function, R2Import, R2Section, R2Core, R2Bin, R2EntryPoint
 
 
 class R2Surface:
     def __init__(self, r2: r2pipe.open_sync.open) -> None:
         self.r2 = r2
+        self.core = R2Core(**self.r2.cmdj("ij")["core"])
+        self.bin = R2Bin(self.r2.cmdj("ij")["bin"])
+        self.entry_point = R2EntryPoint(**self.r2.cmdj("iej")[0])
         self.imports = [R2Import(entry) for entry in self.r2.cmdj("iij")]
         self.exports = [R2Export(**entry) for entry in self.r2.cmdj("iEj")]
         self.sections = [R2Section(**entry) for entry in self.r2.cmdj("iSj")]

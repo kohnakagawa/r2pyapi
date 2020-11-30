@@ -1,0 +1,11 @@
+{
+  "type": "EXEC (Executable file)",
+  "file": "MessageBox.exe",
+  "fd": 3,
+  "size": 82944,
+  "humansz": "81K",
+  "iorw": false,
+  "mode": "r-x",
+  "block": 256,
+  "format": "pe"
+}

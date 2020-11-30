@@ -37,7 +37,7 @@ class R2Writer:
         self, payload: List[int], address_at: int, write_cmd: str
     ) -> None:
         self.r2.cmd(f"s {hex(address_at)}")
-        for i in range(int(len(payload) / self.block_size)):
+        for i in range(int(len(payload) / self.block_size) + 1):
             hex_as_string(payload[self.block_size * i: self.block_size * (i + 1)])
             self.r2.cmd(
                 f"{write_cmd} {hex_as_string(payload[self.block_size * i:self.block_size * (i + 1)])}; s+{hex(self.block_size)};"

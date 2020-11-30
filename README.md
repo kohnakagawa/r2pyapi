@@ -2,6 +2,15 @@
 
 High level radare2 python API 
 
+# Installation
+
+```
+$ pip install r2pyapi
+```
+
+You also need to install [radare2](https://github.com/radareorg/radare2).
+radare2 can be easily installed by the instruction described [here](https://github.com/radareorg/radare2#install--update).
+
 # Usage
 
 ``` python
